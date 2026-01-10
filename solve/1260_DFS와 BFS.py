@@ -14,20 +14,22 @@ for _ in range(m):
   matrix[b][a] = 1
 
 def bfs(graph, start):
-
+  visited = [0]*(n+1)
   queue = deque([start])
   visited[start] = 1
   result = []
+  
   while queue:
-    v = queue.popleft()
-    result.append(v)
-    for neighbor in graph[v]:
+    current = queue.popleft()
+    result.append(current)
+    for neighbor in graph[current]:
       if visited[neighbor] == 0:
         queue.append(neighbor)
         visited[neighbor] = 1
   return result
 
-def dfs(graph, start, visited):
+def dfs(graph, start):
+  visited = [0]*(n+1)
   stack = [start]
   visited[start] = 1
   result = []
