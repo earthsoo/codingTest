@@ -23,26 +23,26 @@ def bfs(graph, start):
     current = queue.popleft()
     result.append(current)
     
-    for neighbor in graph[current]:
-      if visited[neighbor] == 0:
-        queue.append(neighbor)
-        visited[neighbor] = 1
+    for i in range(1, len(graph)):
+      if graph[current][i] == 1 and visited[i] == 0:
+        queue.append(i)
+        visited[i] = 1
   return result
 
 def dfs(graph, start):
   visited = [0]*(n+1)
-  stack = [start]
-  visited[start] = 1
   result = []
-  while stack:
-    v = stack.pop()
-    if visited[v] == 0:
-      visited[v] = 1
-      result.append(v)
-      for neighbor in graph[v]:
-        if visited[neighbor] == 0:
-          stack.append(neighbor)       
+  
+  def dfs_helper(node):
+    visited[node] = 1
+    result.append(node)
+    
+    for i in range(1, len(graph)):
+      if visited[i] == 0 and graph[node][i] == 1:
+        dfs_helper(i)
+        
+  dfs_helper(start)
   return result
 
-print(dfs(matrix, v, visited))
-print(bfs(matrix, v, visited))
+print(*dfs(matrix, v))
+print(*bfs(matrix, v))
