@@ -22,6 +22,7 @@ def bfs(graph, start):
   while queue:
     current = queue.popleft()
     result.append(current)
+    
     for neighbor in graph[current]:
       if visited[neighbor] == 0:
         queue.append(neighbor)
