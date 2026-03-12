@@ -1,10 +1,13 @@
 n = int(input())
 cnt = 0
-tri = 100 #갱신될 숫자
+newnum = 100
 
 fir = n
-while (n != tri):
-  sec = (fir // 10) + (fir % 10)
-  tri = (fir%10)*10 + (2nd % 10)
+while (n != newnum):
+  #(1)각 자리 숫자 더하기
+  sec = (fir // 10) + (fir % 10) 
+  #새로운 수 구하기
+  newnum = (fir%10)*10 + (sec % 10)
   cnt +=1
+  fir = newnum
 print(cnt)
