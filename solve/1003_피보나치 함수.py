@@ -1,20 +1,18 @@
 import sys
 input = sys.stdin.readline
 
-def fibonacci(int n):
-  a = 0
-  b = 0
-  if n==0 :
-    a += 1
-    return [a, b];
-  elif n==1 :
-    b += 1
-    return [a, b];
-  else:
-    return fibonacci(n-1) + fibonacci(n-2)
+zero = [0]*41
+one = [0]*41
 
+zero[0] = 1
+one[1] = 1
+
+for i in range(2, 41):
+  zero[i] = zero[i-1]+zero[i-2]
+  one[i] = one[i-1] + one[i-2]
+  
 #입력 받기
 t = int(input())
 for _ in range(t):
-  n = int(input())
-  
+  n = int(input()) #n<40
+  print (zero[n], one[n])
